@@ -334,7 +334,7 @@ mysql> select *from students;
 |          7 | umuhoza_alice | female | medecine   |   21 |
 +------------+---------------+--------+------------+------+
 3 rows in set (0.00 sec)
-QUESTION9:
+      QUESTION9:
 
 mysql> create table employees(Employee_Id int,First_Name VARCHAR(255) ,Last_Name VARCHAR(255),Email VARCHAR(255),Phone_Number INT,Hire_Date DATE,Job_Id INT,Salary INT,Commission_Pct varchar(255),Manager_Id int,Department_Id int);
 Query OK, 0 rows affected (0.029 sec)
@@ -411,4 +411,134 @@ mysql> select first_name,last_name from employees where department_id in(60,70,8
 | gisubizo   | keli      |
 +------------+-----------+
 4 rows in set (0.001 sec)
+QUESTION 1O
+Mysql> create table sales(Sales_No int primary key,Salesname varchar(255),Branch varchar(255),Salesamount int,DOB date);
+Query OK, 0 rows affected (0.025 sec)
+mysql> insert into sales VALUES(2,'iranzi_noella','huye',2047,'19-10-09');
+Query OK, 1 row affected (0.001 sec)
+msql> insert into sales VALUES(1,'manzi','kayonza',40,'19-10-12');
+Query OK, 1 row affected (0.001 sec)
+msql> insert into sales VALUES(3,'elvin','gikomero',40,'20-06-30');
+Query OK, 1 row affected (0.001 sec)
+msql> insert into sales VALUES(4,'kalisa','kigali',40,'22-05-30');
+Query OK, 1 row affected (0.000 sec)
+msql> insert into sales VALUES(5,'kalisa','ngoma',460,'21-04-29');
+Query OK, 1 row affected (0.001 sec)
+Q10.A Msql> select*from sales;
++----------+---------------+----------+-------------+------------+
+| Sales_No | Salesname     | Branch   | Salesamount | DOB        |
++----------+---------------+----------+-------------+------------+
+|        1 | manzi         | kayonza  |          40 | 2019-10-12 |
+|        2 | iranzi_noella | huye     |        2047 | 2019-10-09 |
+|        3 | elvin         | gikomero |          40 | 2020-06-30 |
+|        4 | kalisa        | kigali   |          40 | 2022-05-30 |
+|        5 | kalisa        | ngoma    |         460 | 2021-04-29 |
++----------+---------------+----------+-------------+------------+
+5 rows in set (0.001 sec)
+Q10.B Msql> select avg(salesamount),branch from sales group by branch;
++------------------+----------+
+| avg(salesamount) | branch   |
++------------------+----------+
+|          40.0000 | gikomero |
+|        2047.0000 | huye     |
+|          40.0000 | kayonza  |
+|          40.0000 | kigali   |
+|         460.0000 | ngoma    |
++------------------+----------+
+5 rows in set (0.001 sec)
+
+Q10.C Msql>  select avg(salesamount),Sales_No Salesname,Branch,DOB from sales group by branch;
++------------------+-----------+----------+------------+
+| avg(salesamount) | Salesname | Branch   | DOB        |
++------------------+-----------+----------+------------+
+|          40.0000 |         3 | gikomero | 2020-06-30 |
+|        2047.0000 |         2 | huye     | 2019-10-09 |
+|          40.0000 |         1 | kayonza  | 2019-10-12 |
+|          40.0000 |         4 | kigali   | 2022-05-30 |
+|         460.0000 |         5 | ngoma    | 2021-04-29 |
++------------------+-----------+----------+------------+
+5 rows in set (0.001 sec)
+Msql> select sum(salesamount),branch from sales group by branch;
++------------------+----------+
+| sum(salesamount) | branch   |
++------------------+----------+
+|               40 | gikomero |
+|             2047 | huye     |
+|               40 | kayonza  |
+|               40 | kigali   |
+|              460 | ngoma    |
++------------------+----------+
+5 rows in set (0.001 sec)
+msql>  select sum(salesamount),Sales_No Salesname,Branch,DOB from sales group by branch;
++------------------+-----------+----------+------------+
+| sum(salesamount) | Salesname | Branch   | DOB        |
++------------------+-----------+----------+------------+
+|               40 |         3 | gikomero | 2020-06-30 |
+|             2047 |         2 | huye     | 2019-10-09 |
+|               40 |         1 | kayonza  | 2019-10-12 |
+|               40 |         4 | kigali   | 2022-05-30 |
+|              460 |         5 | ngoma    | 2021-04-29 |
++------------------+-----------+----------+------------+
+5 rows in set (0.002 sec)
+Msql> select salesname,dob from sales where dob='2019-10-09';
++---------------+------------+
+| salesname     | dob        |
++---------------+------------+
+| iranzi_noella | 2019-10-09 |
++---------------+------------+
+1 row in set (0.001 sec)
+mysql> SELECT salesname, DOB FROM sales ORDER BY MONTH(DOB);
+
+Msql> select salesname,dob from sales order by dob;
++---------------+------------+
+| salesname     | dob        |
++---------------+------------+
+| iranzi_noella | 2019-10-09 |
+| manzi         | 2019-10-12 |
+| elvin         | 2020-06-30 |
+| kalisa        | 2021-04-29 |
+| kalisa        | 2022-05-30 |
++---------------+------------+
+5 rows in set (0.001 sec)
+Msql>  select salesname,dob from sales order by dob desc;
++---------------+------------+
+| salesname     | dob        |
++---------------+------------+
+| kalisa        | 2022-05-30 |
+| kalisa        | 2021-04-29 |
+| elvin         | 2020-06-30 |
+| manzi         | 2019-10-12 |
+| iranzi_noella | 2019-10-09 |
++---------------+------------+
+5 rows in set (0.001 sec)
+
+Msql> select salesname,dob from sales where dob='21-10-09';
+Empty set (0.002 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
