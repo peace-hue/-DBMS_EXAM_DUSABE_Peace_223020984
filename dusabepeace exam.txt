@@ -1,0 +1,414 @@
+               PART A FOUR QUESTIONS
+ 
+mysql> create database isha_collection;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> use isha_collection;
+Database changed
+Q1.  mysql> create table client_master(client_no int(10),name char(20),address char(10),city char(10),state char(15),bal_due int(100));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> insert client_master values('01','anitha','east','los_angles','united_state','10000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert client_master values('02','amina','south','america','united_state','400000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert client_master values('03','mugabo','east','rwanda','africa','50000');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert client_master values('04','john','east','arabs','united_state','60000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert client_master values('05','mary','east','rwanda','africa','80000');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *from client_master;
++-----------+--------+---------+------------+--------------+---------+
+| client_no | name   | address | city       | state        | bal_due |
++-----------+--------+---------+------------+--------------+---------+
+|         1 | anitha | east    | los_angles | united_state |   10000 |
+|         2 | amina  | south   | america    | united_state |  400000 |
+|         3 | mugabo | east    | rwanda     | africa       |   50000 |
+|         4 | john   | east    | arabs      | united_state |   60000 |
+|         5 | mary   | east    | rwanda     | africa       |   80000 |
++-----------+--------+---------+------------+--------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> update client_master set bal_due='1000' where client_no='1';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update client_master set bal_due='4000' where client_no='2';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update client_master set bal_due='5000' where client_no='3';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update client_master set bal_due='6000' where client_no='4';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update client_master set bal_due='7000' where client_no='5';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+sql> select *from client_master;
++-----------+--------+---------+------------+--------------+---------+
+| client_no | name   | address | city       | state        | bal_due |
++-----------+--------+---------+------------+--------------+---------+
+|         1 | anitha | east    | los_angles | united_state |    1000 |
+|         2 | amina  | south   | america    | united_state |    4000 |
+|         3 | mugabo | east    | rwanda     | africa       |    5000 |
+|         4 | john   | east    | arabs      | united_state |    6000 |
+|         5 | mary   | east    | rwanda     | africa       |    7000 |
++-----------+--------+---------+------------+--------------+---------+
+5 rows in set (0.00 sec)
+
+Q2  mysql> select *from client_master where bal_due>5000;
++-----------+------+---------+--------+--------------+---------+
+| client_no | name | address | city   | state        | bal_due |
++-----------+------+---------+--------+--------------+---------+
+|         4 | john | east    | arabs  | united_state |    6000 |
+|         5 | mary | east    | rwanda | africa       |    7000 |
++-----------+------+---------+--------+--------------+---------+
+l> update client_master set client_no='123' where address='south';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from client_master;
++-----------+--------+---------+------------+--------------+---------+
+| client_no | name   | address | city       | state        | bal_due |
++-----------+--------+---------+------------+--------------+---------+
+|         1 | anitha | east    | los_angles | united_state |    1000 |
+|       123 | amina  | south   | america    | united_state |    4000 |
+|         3 | mugabo | east    | rwanda     | africa       |    5000 |
+|         4 | john   | east    | arabs      | united_state |    6000 |
+|         5 | mary   | east    | rwanda     | africa       |    7000 |
++-----------+--------+---------+------------+--------------+---------+
+5 rows in set (0.00 sec)
+
+Q3   mysql> update client_master set bal_due='5100' where client_no='123';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from client_master;
++-----------+--------+---------+------------+--------------+---------+
+| client_no | name   | address | city       | state        | bal_due |
++-----------+--------+---------+------------+--------------+---------+
+|         1 | anitha | east    | los_angles | united_state |    1000 |
+|       123 | amina  | south   | america    | united_state |    5100 |
+|         3 | mugabo | east    | rwanda     | africa       |    5000 |
+|         4 | john   | east    | arabs      | united_state |    6000 |
+|         5 | mary   | east    | rwanda     | africa       |    7000 |
++-----------+--------+---------+------------+--------------+---------+
+ 5 rows in set (0.00 sec)
+
+Q4  sql> rename table client_master to client2;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select *from client2;
++-----------+--------+---------+------------+--------------+---------+
+| client_no | name   | address | city       | state        | bal_due |
++-----------+--------+---------+------------+--------------+---------+
+|         1 | anitha | east    | los_angles | united_state |    1000 |
+|       123 | amina  | south   | america    | united_state |    5100 |
+|         3 | mugabo | east    | rwanda     | africa       |    5000 |
+|         4 | john   | east    | arabs      | united_state |    6000 |
+|         5 | mary   | east    | rwanda     | africa       |    7000 |
++-----------+--------+---------+------------+--------------+---------+
+mysql> select *from employees;
++-------------+------------+-----------+---------+----------------------+
+| employee_no | first_name | last_name | address | email                |
++-------------+------------+-----------+---------+----------------------+
+|           1 | mutoni     | clemance  | muhanga | mutoniclemance@gmail |
++-------------+------------+-----------+---------+----------------------+
+1 row in set (0.00 sec)
+ 
+                         PART B COMPULSORY
+
+Q.6A  mysql> create table departments(departmaent_id int(10),department_name char(10),location char(10),email varchar(20),director char(20));
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+mysql> insert departments values('01','finance_department','musanze','finance12@gmail.com','mugabo_john');
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> insert departments values('01','accounting_department','remera','accounting@gmail.com','muvunyi');
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert departments values('01','marketing_department','muhanga','marketing@gmail.com','muhongerwa');
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> insert departments values('01','sales_department','nyanza','sales@gmail.com','amina');
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> select *from departments;
++----------------+-----------------+----------+----------------------+-------------+
+| departmaent_id | department_name | location | email                | director    |
++----------------+-----------------+----------+----------------------+-------------+
+|              1 | finance_de      | musanze  | finance12@gmail.com  | mugabo_john |
+|              1 | accounting      | remera   | accounting@gmail.com | muvunyi     |
+|              1 | marketing_      | muhanga  | marketing@gmail.com  | muhongerwa  |
+|              1 | sales_depa      | nyanza   | sales@gmail.com      | amina       |
++----------------+-----------------+----------+----------------------+-------------+
+
+mysql> create table employees (employee_id int(10),first_name char(20),last_name char(20),salary int(40),email varchar(30));
+Query OK, 0 rows affected, 2 warnings (0.03 sec)
+
+mysql> insert employees values('01','mutesi','dinah','50000','mutesidina@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert employees values('02','mugabo','yve','70000','mugabo@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert employees values('03','muhoza','alice','80000','muhoza@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert employees values('04','mugenzi','enock','100000','mugenzi@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+Q6.B mysql> select *from employees;
++-------------+------------+-----------+--------+----------------------+
+| employee_id | first_name | last_name | salary | email                |
++-------------+------------+-----------+--------+----------------------+
+|           1 | mutesi     | dinah     |  50000 | mutesidina@gmail.com |
+|           2 | mugabo     | yve       |  70000 | mugabo@gmail.com     |
+|           3 | muhoza     | alice     |  80000 | muhoza@gmail.com     |
+|           4 | mugenzi    | enock     | 100000 | mugenzi@gmail.com    |
++-------------+------------+-----------+--------+----------------------+
+4 rows in set (0.00 sec)
+ 
+Q6.D  mysql> select employees.First_Name, employees.Last_Name, department.Dep_Name from employees left join department on employees.Emp_Id=department.Dep_Id;
++------------+-----------------+------------+
+| First_Name | Last_Name       | Dep_Name   |
++------------+-----------------+------------+
+| mutesi     | Dinah           | finance    |
+| mugabo     | yve             | accountin  |      
+| mugenzi    | Enock           | marketing  |
++------------+-----------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select employees.First_Name, employees.Last_Name, department.Dep_Name from employees right join department on employees.Emp_Id=department.Dep_Id;
++------------+-----------------+------------+
+| First_Name | Last_Name       | Dep_Name   |
++------------+-----------------+------------+
+|  mutesi    | Dina            |  finance   |
+| mugabo     | yve             | accountin  |      
+| mugenzi    | Enock           | marketing  |
++------------+-----------------+------------+
+5 rows in set (0.00 sec)
+
+Q6.E mysql> SELECT *FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);
++--------+----------+--------+
+| emp_id | emp_name | salary |
++--------+----------+--------+
+| emp101 | mutesi   | 800000 |
+| emp41  | mugabo   | 910000 |
++--------+----------+--------+
+2 rows in set (0.01 sec)
+
+
+mysql> SELECT *FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);
++--------+----------+--------+
+| emp_id | emp_name | salary |
++--------+----------+--------+
+| emp101 | mutesi   | 800000 |
+| emp41  | mugabo   | 910000 |
++--------+----------+--------+
+2 rows in set (0.01 sec)
+
+
+
+Q7.create table students (student_id int (5),full_names char(25),gender char(6),department varchar(30));
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+Q7.4 mysql> insert students values('01','mutuzo_dany','male','business_information');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert students values('02','mukundwa_leah','female','accounting');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert students values('03','munezero_eric','male','logistics');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert students values('04','umutoni_assia','female','logistics');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert students values('05','amani_hasani','male','nursing');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert students values('06','andrew_hirwa','male','medecine');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert students values('06','umuhoza_alice','female','medecine');
+Query OK, 1 row affected (0.00 sec)
+
+Q7.1 mysql> select *from students;
++------------+---------------+--------+----------------------+
+| student_id | full_names    | gender | department           |
++------------+---------------+--------+----------------------+
+|          1 | mutuzo_dany   | male   | business_information |
+|          2 | mukundwa_leah | female | accounting           |
+|          3 | munezero_eric | male   | logistics            |
+|          4 | umutoni_assia | female | logistics            |
+|          5 | amani_hasani  | male   | nursing              |
+|          6 | andrew_hirwa  | male   | medecine             |
+|          6 | umuhoza_alice | female | medecine             |
++------------+---------------+--------+----------------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table students add age int(2);
+Query OK, 7 rows affected, 1 warning (0.05 sec)
+Records: 7  Duplicates: 0  Warnings: 1
+
+mysql> select *from students;
++------------+---------------+--------+----------------------+------+
+| student_id | full_names    | gender | department           | age  |
++------------+---------------+--------+----------------------+------+
+|          1 | mutuzo_dany   | male   | business_information |   18 |
+|          2 | mukundwa_leah | female | accounting           |   17 |
+|          3 | munezero_eric | male   | logistics            |   20 |
+|          4 | umutoni_assia | female | logistics            |   21 |
+|          5 | amani_hasani  | male   | nursing              |   19 |
+|          6 | andrew_hirwa  | male   | medecine             |   16 |
+|          7 | umuhoza_alice | female | medecine             | NULL |
++------------+---------------+--------+----------------------+------+
+7 rows in set (0.00 sec)
+
+mysql> update students set age='21' where student_id='7';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from students;
++------------+---------------+--------+----------------------+------+
+| student_id | full_names    | gender | department           | age  |
++------------+---------------+--------+----------------------+------+
+|          1 | mutuzo_dany   | male   | business_information |   18 |
+|          2 | mukundwa_leah | female | accounting           |   17 |
+|          3 | munezero_eric | male   | logistics            |   20 |
+|          4 | umutoni_assia | female | logistics            |   21 |
+|          5 | amani_hasani  | male   | nursing              |   19 |
+|          6 | andrew_hirwa  | male   | medecine             |   16 |
+|          7 | umuhoza_alice | female | medecine             |   21 |
++------------+---------------+--------+----------------------+------+
+7 rows in set (0.00 sec)
+
+Q7.2 mysql> select *from students where gender='female';
++------------+---------------+--------+----------------------+------+
+| student_id | full_names    | gender | department           | age  |
++------------+---------------+--------+----------------------+------+|
+|2           |mukundwa_leah  |female  |accounting            |17    |
+|4           |mutoni_assia   |female  |logistics             |21    | 
+|7           |umuhoza_alice  |female  |medicine              |21
+------------+---------------+--------+----------------------+------+
+
+Q7.3 mysql> select *from students where gender='male';
++------------+---------------+--------+----------------------+------+
+| student_id | full_names    | gender | department           | age  |
++------------+---------------+--------+----------------------+------+
+|         3  | munezero_eric  | male   | logistics            |   20 |
+|          1 | mutuzo_dany    | male   | business_information |   18 |
+|          5 | amani_hasani  | male   | nursing              |    19 |
+|          6 | andrew_hirwa  | male   | medecine             |   16 |
++------------+---------------+--------+----------------------+------+
+
+mysql> select *from students where age<20;
++------------+---------------+--------+----------------------+------+
+| student_id | full_names    | gender | department           | age  |
++------------+---------------+--------+----------------------+------+
+|          1 | mutuzo_dany   | male   | business_information |   18 |
+|          2 | mukundwa_leah | female | accounting           |   17 |
+|          5 | amani_hasani  | male   | nursing              |   19 |
+|          6 | andrew_hirwa  | male   | medecine             |   16 |
++------------+---------------+--------+----------------------+------+
+Q7.5 mysql> DELETE FROM students WHERE age < 20;
+Query OK, 4 rows affected (0.00 sec)
+
+mysql> select *from students;
++------------+---------------+--------+------------+------+
+| student_id | full_names    | gender | department | age  |
++------------+---------------+--------+------------+------+
+|          3 | munezero_eric | male   | logistics  |   20 |
+|          4 | umutoni_assia | female | logistics  |   21 |
+|          7 | umuhoza_alice | female | medecine   |   21 |
++------------+---------------+--------+------------+------+
+3 rows in set (0.00 sec)
+QUESTION9:
+
+mysql> create table employees(Employee_Id int,First_Name VARCHAR(255) ,Last_Name VARCHAR(255),Email VARCHAR(255),Phone_Number INT,Hire_Date DATE,Job_Id INT,Salary INT,Commission_Pct varchar(255),Manager_Id int,Department_Id int);
+Query OK, 0 rows affected (0.029 sec)
+
+mysql> insert into employees values(1,'keza','kaliza','kaliza230',0789876,'21-12-02',10,1000','hhh',100,60);
+Query OK, 1 row affected (0.002 sec)
+
+mysql> insert into employees values(3,'keza','austin','kaliza230',0789876,'21-11-02',10,1000,'gig',100,70);
+Query OK, 1 row affected (0.001 sec)
+
+mysql> insert into employees values(4,'iranzi','austin','manzi23',07898764,'21-11-05',20,4800,'seas',90,80);
+Query OK, 1 row affected (0.001 sec)
+
+mysql> insert into employees values(5,'gisubizo','keli','keli23',07898567,'21-10-05',60,50000,'sea',90,60);
+Query OK, 1 row affected (0.001 sec)
+
+mysql> insert into employees values(6,'tumu','sando','austin',078985677,'21-10-05',60,579,'sensa',90,50);
+Query OK, 1 row affected (0.001 sec)
+mysql> select*from employees;
++-------------+------------+-----------+-----------+--------------+------------+--------+--------+----------------+------------+---------------+
+| Employee_Id | First_Name | Last_Name | Email     | Phone_Number | Hire_Date  | Job_Id | Salary | Commission_Pct | Manager_Id | Department_Id |
++-------------+------------+-----------+-----------+--------------+------------+--------+--------+----------------+------------+---------------+
+|           1 | keza       | kaliza    | kaliza230 |       789876 | 2021-12-02 |     10 |   1000 | hhhh           |        100 |            60 |
+|           3 | keza       | austin    | kaliza230 |       789876 | 2021-11-02 |     10 |   1000 | gig            |        100 |            70 |
+|           4 | iranzi     | austin    | manzi23   |      7898764 | 2021-11-05 |     20 |   4800 | seas           |         90 |            80 |
+|           5 | gisubizo   | keli      | keli23    |      7898567 | 2021-10-05 |     60 |  50000 | sea            |         90 |            60 |
+|           6 | tumu       | sando     | austin    |     78985677 | 2021-10-05 |     60 |    579 | sensa          |         90 |            50 |
++-------------+------------+-----------+-----------+--------------+------------+--------+--------+----------------+------------+---------------+
+5 rows in set (0.001 sec)
+mysql> select employee_id,first_name,last_name,salary from employees;
++-------------+------------+-----------+--------+
+| employee_id | first_name | last_name | salary |
++-------------+------------+-----------+--------+
+|           1 | keza       | kaliza    |   1000 |
+|           3 | keza       | austin    |   1000 |
+|           4 | iranzi     | austin    |   4800 |
+|           5 | gisubizo   | keli      |  50000 |
+|           6 | tumu       | sando     |    579 |
++-------------+------------+-----------+--------+
+5 rows in set (0.001 sec)
+mysql> select *from employees where manager_id=100;
++-------------+------------+-----------+-----------+--------------+------------+--------+--------+----------------+------------+---------------+
+| Employee_Id | First_Name | Last_Name | Email     | Phone_Number | Hire_Date  | Job_Id | Salary | Commission_Pct | Manager_Id | Department_Id |
++-------------+------------+-----------+-----------+--------------+------------+--------+--------+----------------+------------+---------------+
+|           1 | keza       | kaliza    | kaliza230 |       789876 | 2021-12-02 |     10 |   1000 | ggg            |        100 |            60 |
+|           3 | keza       | austin    | kaliza230 |       789876 | 2021-11-02 |     10 |   1000 | ggg            |        100 |            70 |
++-------------+------------+-----------+-----------+--------------+------------+--------+--------+----------------+------------+---------------+
+2 rows in set (0.001 
+
+mysql> select first_name,last_name from employees where salary>=4800;
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| iranzi     | austin    |
+| gisubizo   | keli      |
++------------+-----------+
+2 rows in set (0.001 sec)
+
+mysql> select *from employees where last_name='austin';
++-------------+------------+-----------+-----------+--------------+------------+--------+--------+----------------+------------+---------------+
+| Employee_Id | First_Name | Last_Name | Email     | Phone_Number | Hire_Date  | Job_Id | Salary | Commission_Pct | Manager_Id | Department_Id |
++-------------+------------+-----------+-----------+--------------+------------+--------+--------+----------------+------------+---------------+
+|           3 | keza       | austin    | kaliza230 |       789876 | 2021-11-02 |     10 |   1000 | ggg            |        100 |            70 |
+|           4 | iranzi     | austin    | manzi23   |      7898764 | 2021-11-05 |     20 |   4800 | sesa           |         90 |            80 |
++-------------+------------+-----------+-----------+--------------+------------+--------+--------+----------------+------------+---------------+
+2 rows in set (0.001 sec)
+mysql> select first_name,last_name from employees where department_id in(60,70,80);
++------------+-----------+
+| first_name | last_name |
++------------+-----------+
+| keza       | kaliza    |
+| keza       | austin    |
+| iranzi     | austin    |
+| gisubizo   | keli      |
++------------+-----------+
+4 rows in set (0.001 sec)
+
